@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout/master-layout}">>
+<head>
+    <title>HomePage</title>
+</head>
+<body>
+<!--call layout root-->
+<main layout:fragment="main-content">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div th:each="product : ${products}" th:object="${product}" class="col">
+                <div th:replace="~{fragments/card :: card-action(*{id}, *{name}, *{qty}, *{price})}"></div>
+            </div>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>
+
+<!--    <div th:each="product : ${products}" th:object="${product}">-->
+<!--        <div th:replace="fragments/card :: card-action(id=${product.id}, name=${product.name}, qty=${product.qty}, price=${product.price})"></div>-->
+<!--    </div>-->
+
+<!--  <div th:replace="~{fragments/card :: card-action(*{uuid}, *{title}, *{thumbnail}, *{author},*{category})}"></div>-->
